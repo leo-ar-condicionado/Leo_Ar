@@ -158,10 +158,9 @@ ol {
 }
 
 .header__logo {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  object-fit: cover;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -269,46 +268,19 @@ ol {
    HERO
    ========================================================================== */
 .hero {
-  position: relative;
-  padding: calc(var(--altura-header) + 3rem) 0 5rem;
-  background: linear-gradient(140deg, var(--azul-escuro) 0%, var(--azul) 55%, #1e88e5 100%);
+  padding: calc(var(--altura-header) + 3.5rem) 0 4.5rem;
+  background: linear-gradient(140deg, var(--azul-navy) 0%, var(--azul-escuro) 55%, var(--azul) 100%);
   color: var(--branco);
-  overflow: hidden;
-}
-
-/* brilho decorativo */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-.hero::before {
-  width: 380px;
-  height: 380px;
-  background: var(--laranja);
-  top: -120px;
-  right: -100px;
-}
-
-.hero::after {
-  width: 300px;
-  height: 300px;
-  background: #64b5f6;
-  bottom: -80px;
-  left: -100px;
 }
 
 .hero__inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 2.5rem;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__content {
+  max-width: 720px;
+  text-align: center;
 }
 
 .hero__badge {
@@ -337,12 +309,14 @@ ol {
   font-size: clamp(1rem, 2.5vw, 1.15rem);
   color: rgba(255, 255, 255, 0.88);
   margin-bottom: 1.75rem;
-  max-width: 32rem;
+  max-width: 34rem;
+  margin-inline: auto;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.85rem;
   margin-bottom: 1.75rem;
 }
@@ -350,48 +324,10 @@ ol {
 .hero__beneficios {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem 1.5rem;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.85);
-}
-
-.hero__figure {
-  display: flex;
-  justify-content: center;
-}
-
-.hero__card {
-  background: var(--branco);
-  border-radius: 24px;
-  padding: 1.25rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-  max-width: 340px;
-  width: 100%;
-  transform: rotate(-2deg);
-  transition: transform 0.4s ease;
-}
-
-.hero__card:hover {
-  transform: rotate(0deg) scale(1.02);
-}
-
-.hero__logo {
-  border-radius: 16px;
-  width: 100%;
-}
-
-.hero__wave {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  line-height: 0;
-}
-
-.hero__wave svg {
-  width: 100%;
-  height: 50px;
-  display: block;
 }
 
 /* ==========================================================================
@@ -471,7 +407,7 @@ ol {
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
   box-shadow: var(--sombra-hover);
 }
 
@@ -558,12 +494,24 @@ ol {
 
 .diferencial:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .diferencial__icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(245, 159, 10, 0.16);
+  color: var(--laranja);
+  margin-bottom: 1rem;
+}
+
+.diferencial__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
 }
 
 .diferencial h3 {
@@ -597,7 +545,7 @@ ol {
 }
 
 .passo:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--sombra);
 }
 
@@ -739,7 +687,9 @@ ol {
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--branco);
+  padding: 4px;
 }
 
 .footer__name {
@@ -799,11 +749,10 @@ ol {
   place-items: center;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
   transition: transform var(--transicao), box-shadow var(--transicao);
-  animation: pulso 2.5s infinite;
 }
 
 .whats-flutuante:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
 }
 
@@ -813,25 +762,13 @@ ol {
   fill: var(--branco);
 }
 
-@keyframes pulso {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
-  }
-  70% {
-    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
-
 /* ==========================================================================
    ANIMAÇÃO DE ENTRADA (scroll reveal)
    ========================================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .reveal.visivel {
@@ -849,10 +786,6 @@ ol {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-
-  .whats-flutuante {
-    animation: none;
   }
 }
 
@@ -914,14 +847,8 @@ ol {
     align-self: auto;
   }
 
-  /* Hero em duas colunas */
   .hero {
-    padding: calc(var(--altura-header) + 4.5rem) 0 6.5rem;
-  }
-
-  .hero__inner {
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3rem;
+    padding: calc(var(--altura-header) + 5rem) 0 6rem;
   }
 
   .cards {
